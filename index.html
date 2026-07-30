@@ -1,1 +1,259 @@
-hi
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FrostFotos</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    background:#181818;
+    color:white;
+}
+header{
+    position:sticky;
+    top:0;
+    z-index:100;
+    display:flex;
+    align-items:center;
+    gap:15px;
+    padding:15px;
+    background:#202020;
+    border-bottom:1px solid #333;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:bold;
+    white-space:nowrap;
+}
+
+.search{
+    flex:1;
+}
+
+.search input{
+    width:100%;
+    padding:11px;
+    border:none;
+    border-radius:8px;
+    background:#303030;
+    color:white;
+    font-size:16px;
+}
+
+.search input:focus{
+    outline:none;
+}
+
+.filterBtn{
+    background:#3a3a3a;
+    color:white;
+    border:none;
+    padding:11px 16px;
+    border-radius:8px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.filterBtn:hover{
+    background:#555;
+}
+
+/* Gallery */
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
+    gap:18px;
+    padding:20px;
+}
+
+.card{
+    background:#252525;
+    border-radius:12px;
+    overflow:hidden;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.card:hover{
+    transform:translateY(-4px);
+}
+
+.card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+    display:block;
+}
+
+.cardTitle{
+    padding:12px;
+    font-weight:bold;
+}
+
+/* Modal */
+
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.88);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:500;
+}
+
+.modalContent{
+    background:#222;
+    width:90%;
+    max-width:950px;
+    border-radius:15px;
+    overflow:hidden;
+}
+
+.modal img{
+    width:100%;
+    max-height:70vh;
+    object-fit:contain;
+    background:black;
+}
+
+.info{
+    padding:20px;
+}
+
+.info h2{
+    margin-bottom:10px;
+}
+
+.info p{
+    margin-bottom:20px;
+    color:#ccc;
+}
+
+.buttons{
+    display:flex;
+    gap:12px;
+}
+
+.download{
+    background:#4CAF50;
+    color:white;
+    text-decoration:none;
+    padding:12px 20px;
+    border-radius:8px;
+}
+
+.close{
+    background:#444;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+/* Empty Search */
+
+.noResults{
+    text-align:center;
+    font-size:22px;
+    color:#aaa;
+    padding:40px;
+    display:none;
+}
+
+@media(max-width:700px){
+
+header{
+    flex-wrap:wrap;
+}
+
+.logo{
+    width:100%;
+    text-align:center;
+}
+
+.filterBtn{
+    width:100%;
+}
+
+}
+</style>
+
+</head>
+<body>
+
+<header>
+
+<div class="logo">
+frostfotos
+</div>
+
+<div class="search">
+<input
+id="searchBox"
+type="text"
+placeholder="Search images...">
+</div>
+
+<button class="filterBtn">
+Filters
+</button>
+
+</header>
+
+<div id="gallery" class="gallery"></div>
+
+<div id="noResults" class="noResults">
+No images found.
+</div>
+
+<div id="modal" class="modal">
+
+<div class="modalContent">
+
+<img id="modalImage">
+
+<div class="info">
+
+<h2 id="modalTitle"></h2>
+
+<p id="modalAuthor"></p>
+
+<div class="buttons">
+
+<a
+id="downloadBtn"
+class="download"
+download>
+Download
+</a>
+
+<button
+id="closeBtn"
+class="close">
+Close
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
